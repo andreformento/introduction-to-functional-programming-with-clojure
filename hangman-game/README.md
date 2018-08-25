@@ -1,4 +1,4 @@
-# forca
+# hangman-game
 
 FIXME: description
 
@@ -10,7 +10,7 @@ Download from http://example.com/FIXME.
 
 FIXME: explanation
 
-    $ java -jar forca-0.1.0-standalone.jar [args]
+    $ java -jar hangman-game-0.1.0-standalone.jar [args]
 
 ## Options
 
