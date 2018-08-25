@@ -16,7 +16,7 @@ Repl: `cd hangman-game && lein repl`
 ### Exercises
 
 Calculate
-```
+```clojure
 "4 + (1+2)"
 (+ 4 (+ 1 2))
 
@@ -28,7 +28,7 @@ Calculate
 ```
 
 Functions
-```
+```clojure
 (defn mult2 [x] (* x 2))
 
 (defn mult-square [x]
