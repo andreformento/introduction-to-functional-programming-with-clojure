@@ -27,7 +27,7 @@ Calculate
 (+ (* 5 (/ 10 2)) 1)
 ```
 
-Functions
+First Functions
 ```clojure
 (defn mult2 [x] (* x 2))
 
@@ -35,4 +35,48 @@ Functions
   (* x (+ 2 x)))
 
 (defn pow3 [x] (* x (Math/pow 2 x)))
+```
+
+Reload source code
+```clojure
+(require '[hangman-game.core :as hangman-game] :reload)
+"Now you can invoke function:"
+(hangman-game/game 5)
+```
+
+Equal and not equal exercies
+```clojure
+"10 = 6"
+(= 10 6)
+
+"20 = 20"
+(= 20 20)
+
+"15 = 15"
+(= 15 15)
+
+"10 not= 10"
+(not= 10 10)
+
+"10 not= 20"
+(not= 10 20)
+```
+
+Fibonacci
+```clojure
+"fib(0) = 0"
+"fib(1) = 1"
+"fib(n) = fib(n-1) + fib(n-2), se n >= 2"
+
+(defn fibonacci [n]
+  (if (= n 0)
+    (0)
+    (if (= n 1)
+      (1)
+      (+ (fibonacci(- n 1))
+         (fibonacci(- n 2))
+      )
+    )
+  )
+)
 ```
