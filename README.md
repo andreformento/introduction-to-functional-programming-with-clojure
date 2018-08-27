@@ -64,6 +64,6 @@ Equal and not equal exercies
 
 Fibonacci
 ```clojure
-(require '[hangman-game.exercises :as exercises] :reload)
-exercises/fibonacci(3)
+(require '[exercises.core :as exercises] :reload)
+(exercises/fibonacci 3)
 ```

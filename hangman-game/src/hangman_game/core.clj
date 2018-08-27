@@ -3,14 +3,18 @@
 
 (def total-lives 6)
 
-(defn you-lose [] (print "You lose"))
+(defn you-lose [] (print "You lose :/"))
 
-(defn game [lives]
+(defn winner [] (print "You win =)"))
+
+(defn you-got-a-whole-word? [word hits] true)
+
+(defn game [lives word hits]
   (if (= lives 0)
     (you-lose) ;; true
-    (do ;; else
-      (print lives)
-      (game (dec lives))
+    (if (you-got-a-whole-word? word hits)
+      (winner)
+      (print "Try a value")
     )
   )
 

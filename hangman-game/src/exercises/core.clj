@@ -1,4 +1,4 @@
-(ns hangman-game.exercises
+(ns exercises.core
   (:gen-class))
 
 ;; fib(0) = 0
