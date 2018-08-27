@@ -64,19 +64,6 @@ Equal and not equal exercies
 
 Fibonacci
 ```clojure
-"fib(0) = 0"
-"fib(1) = 1"
-"fib(n) = fib(n-1) + fib(n-2), se n >= 2"
-
-(defn fibonacci [n]
-  (if (= n 0)
-    (0)
-    (if (= n 1)
-      (1)
-      (+ (fibonacci(- n 1))
-         (fibonacci(- n 2))
-      )
-    )
-  )
-)
+(require '[hangman-game.exercises :as exercises] :reload)
+exercises/fibonacci(3)
 ```
