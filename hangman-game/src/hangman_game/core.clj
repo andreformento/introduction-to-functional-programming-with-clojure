@@ -7,8 +7,17 @@
 
 (defn winner [] (print "You win =)"))
 
-(defn you-got-a-whole-word? [word hits] true)
+;; (hangman-game/missing-letters "BANANA" #{"B" "A"})
+(defn missing-letters [word hits]
+  (remove (fn [letter] (contains? hits (str letter))) word)
+)
 
+(defn you-got-a-whole-word? [word hits]
+  (empty? (missing-letters word hits))
+)
+
+;; (hangman-game/game 5 "BANANA" #{"B" "A"})
+;; (hangman-game/game 4 "BANANA" #{"B" "N" "A"})
 (defn game [lives word hits]
   (if (= lives 0)
     (you-lose) ;; true
@@ -17,7 +26,6 @@
       (print "Try a value")
     )
   )
-
 )
 
 (defn -main

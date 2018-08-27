@@ -41,7 +41,7 @@ Reload source code
 ```clojure
 (require '[hangman-game.core :as hangman-game] :reload)
 "Now you can invoke function:"
-(hangman-game/game 5)
+(hangman-game/game 5 "Banana" #{"A" "B"})
 ```
 
 Equal and not equal exercies
@@ -66,4 +66,31 @@ Fibonacci
 ```clojure
 (require '[exercises.core :as exercises] :reload)
 (exercises/fibonacci 3)
+```
+
+Lists
+```clojure
+(def numbers [1 2 3 4 5])
+(map (fn [x] (* x 3)) numbers)
+(defn mult [x] (* x 2))
+(mult 2)
+(map mult numbers)
+
+(defn even? [x] (= 0 (rem x 2)))
+(even? 1)
+(even? 2)
+
+(remove even? numbers)
+
+(defn number-outside-2-and-4? [x] (or (< x 2) (> x 4)))
+(filter number-outside-2-and-4? numbers)
+
+(def word #{"B" "N" "A"})
+(defn word-contains-letter? [word]
+  (and
+    (contains? word "A")
+    (contains? word "B")
+  )
+)
+(word-contains-letter? word)
 ```
