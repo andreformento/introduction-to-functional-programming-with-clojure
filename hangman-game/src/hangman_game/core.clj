@@ -3,11 +3,9 @@
 
 (def total-lives 6)
 
-(defn you-lose [] (print "You lose :/"))
+(defn you-lose [] print "You lose")
+(defn you-win [] print "You win!")
 
-(defn winner [] (print "You win =)"))
-
-;; (hangman-game/missing-letters "BANANA" #{"B" "A"})
 (defn missing-letters [word hits]
   (remove (fn [letter] (contains? hits (str letter))) word)
 )
@@ -16,16 +14,29 @@
   (empty? (missing-letters word hits))
 )
 
-;; (hangman-game/game 5 "BANANA" #{"B" "A"})
-;; (hangman-game/game 4 "BANANA" #{"B" "N" "A"})
-(defn game [lives word hits]
-  (if (= lives 0)
-    (you-lose) ;; true
-    (if (you-got-a-whole-word? word hits)
-      (winner)
-      (print "Try a value")
+(defn read-letter! [] (read-line))
+
+(defn is-right? [letter word] (.contains word letter))
+
+(defn game [lives word hits])
+
+(defn check [letter lives word hits]
+    (if (is-right? letter word)
+        (game lives word (conj hits letter))
+        (game (dec lives) word hits)
     )
-  )
+)
+
+;; (require '[hangman-game.core :as hangman-game] :reload)
+;; (hangman-game/game 5 "BANANA" #{})
+(defn game [lives word hits]
+    (if (= lives 0)
+        (you-lose)
+        (if (you-got-a-whole-word? word hits)
+            (you-win)
+            (check (read-letter!) lives word hits)
+        )
+    )
 )
 
 (defn -main
