@@ -94,3 +94,10 @@ Lists
 )
 (word-contains-letter? word)
 ```
+
+Read line
+```clojure
+(defn read-letter! [] (read-line))
+(defn calculate [] (* 7 (Integer/parseInt (read-letter!))))
+(calculate)
+```
