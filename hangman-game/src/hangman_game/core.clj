@@ -7,12 +7,10 @@
 (defn you-win [] print "You win!")
 
 (defn missing-letters [word hits]
-  (remove (fn [letter] (contains? hits (str letter))) word)
-)
+  (remove (fn [letter] (contains? hits (str letter))) word))
 
 (defn you-got-a-whole-word? [word hits]
-  (empty? (missing-letters word hits))
-)
+  (empty? (missing-letters word hits)))
 
 (defn read-letter! [] (read-line))
 
@@ -20,9 +18,24 @@
 
 (defn game [lives word hits])
 
+(defn print-hangman [lives word hits]
+  (println "Lives " lives)
+  ;; LAZY:
+  ; (map
+  ;   (fn [letter] (if (contains? hits (str letter))
+  ;                    (print letter " ")
+  ;                    (print "_" " ")))
+  ;   word)
+  (doseq [letter (seq word)]
+    (if (contains? hits (str letter))
+      (print letter " ")
+      (print "_" " ")))
+  (println))
+
 ;; (require '[hangman-game.core :as hangman-game] :reload)
 ;; (hangman-game/game 5 "BANANA" #{})
 (defn game [lives word hits]
+  (print-hangman lives word hits)
   (cond
     (= lives 0) (you-lose)
     (you-got-a-whole-word? word hits) (you-win)
@@ -35,12 +48,7 @@
         )
         (do
           (println "Oops... the letter is wrong!")
-          (recur (dec lives) word hits)
-        )
-      )
-    )
-  )
-)
+          (recur (dec lives) word hits))))))
 
 (defn -main
   "I don't do a whole lot ... yet."

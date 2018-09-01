@@ -43,7 +43,7 @@ Reload source code
 ```clojure
 (require '[hangman-game.core :as hangman-game] :reload)
 "Now you can invoke function:"
-(hangman-game/game 5 "Banana" #{"A" "B"})
+(hangman-game/game 5 "BANANA" #{"A"})
 ```
 
 Equal and not equal exercies
