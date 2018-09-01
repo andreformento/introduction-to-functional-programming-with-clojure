@@ -2,9 +2,10 @@
   (:gen-class))
 
 (def total-lives 6)
+(def secret-word "BANANA")
 
-(defn you-lose [] print "You lose")
-(defn you-win [] print "You win!")
+(defn you-lose [] println "You lose")
+(defn you-win [] println "You win!")
 
 (defn missing-letters [word hits]
   (remove (fn [letter] (contains? hits (str letter))) word))
@@ -50,7 +51,9 @@
           (println "Oops... the letter is wrong!")
           (recur (dec lives) word hits))))))
 
-(defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  (println "Hello, World!"))
+(defn lets-play-a-game []
+  (println "Let's play a game :]")
+  (game total-lives secret-word #{}))
+
+(defn -main [& args]
+  (lets-play-a-game))

@@ -103,3 +103,42 @@ Read line
 (defn calculate [] (* 7 (Integer/parseInt (read-letter!))))
 (calculate)
 ```
+
+Car exercises
+```clojure
+(def cars [50000.0 60000.0])
+(map (fn [x] (* x 2)) cars)
+(reduce (fn [accumulator current-value] (+ accumulator current-value)) cars)
+
+; magic! ->>
+(->> cars
+     (map (fn [x] (* x 2)))
+     (reduce (fn [acc n] (+ acc n))))
+; or any functions
+(->> cars
+     (map (fn [x] (* x 2)))
+     (map (fn [x] (* x 1.5)))
+     (reduce (fn [acc n] (+ acc n))))
+; another example
+(->> cars
+     (map (fn [x] (* x 2)))
+     (map (fn [x] (- x 200))))
+```
+
+**BEFORE next steps** :
+```shell
+cd hangman-game
+```
+
+
+Finally, let's play a game:
+```shell
+lein run
+```
+
+Make a jar
+```shell
+lein uberjar
+# and then run like a Java program
+java -jar target/uberjar/hangman-game-0.1.0-SNAPSHOT-standalone.jar
+```
