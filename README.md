@@ -8,6 +8,8 @@ chmod +x ~/bin/lein
 echo 'export PATH=~/bin/lein:$PATH' >> ~/.zshrc
 ```
 
+On vscode you can install calva plugin `ext install cospaia.clojure4vscode`
+
 Create project: `lein new app hangman-game`
 
 Repl: `cd hangman-game && lein repl`

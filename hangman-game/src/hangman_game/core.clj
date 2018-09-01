@@ -20,23 +20,26 @@
 
 (defn game [lives word hits])
 
-(defn check [letter lives word hits]
-    (if (is-right? letter word)
-        (game lives word (conj hits letter))
-        (game (dec lives) word hits)
-    )
-)
-
 ;; (require '[hangman-game.core :as hangman-game] :reload)
 ;; (hangman-game/game 5 "BANANA" #{})
 (defn game [lives word hits]
-    (if (= lives 0)
-        (you-lose)
-        (if (you-got-a-whole-word? word hits)
-            (you-win)
-            (check (read-letter!) lives word hits)
+  (cond
+    (= lives 0) (you-lose)
+    (you-got-a-whole-word? word hits) (you-win)
+    :else
+    (let [letter (read-letter!)]
+      (if (is-right? letter word)
+        (do
+          (println "YEAH! The letter is right :)")
+          (recur lives word (conj hits letter))
         )
+        (do
+          (println "Oops... the letter is wrong!")
+          (recur (dec lives) word hits)
+        )
+      )
     )
+  )
 )
 
 (defn -main
